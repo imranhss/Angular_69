@@ -1,0 +1,26 @@
+{
+  "student": [
+    {
+      "id": "1",
+      "name": "Badrul",
+      "email": "badrul@gmail.compiler",
+      "cellNo": "88888",
+      "fee": "1111111"
+    },
+    {
+      "name": "Muhammad Emran Hossain",
+      "email": "hsstanvir@gmail.com",
+      "cellNo": "5655545",
+      "fee": "88888",
+      "id": "iRb6jXPrmv0"
+    },
+    {
+      "name": " Emran Hossain",
+      "email": "gfhgfhgf@gmail.com",
+      "cellNo": "66666",
+      "fee": "3000",
+      "id": "CbFJnyyxMfY"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
