@@ -22,5 +22,22 @@
       "id": "CbFJnyyxMfY"
     }
   ],
+  "department": [
+    {
+      "id": "1",
+      "name": "Accounting",
+      "email": "accc@gmail.com"
+    },
+    {
+      "id": "18L3zMr_49g",
+      "name": "Finance",
+      "email": "Finance@gmail.com"
+    },
+    {
+      "name": "Sajin",
+      "email": "hsstanvir@gmail.com",
+      "id": "LpWbAag8stM"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
