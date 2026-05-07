@@ -24,15 +24,15 @@ getAllTeacher(): Observable<TeacherModel[]>{
 
 
 // Post Request
-  save(dep: TeacherModel) {
-    return this.http.post<TeacherModel>(this.teacherAPI, dep);
+  save(teacher: TeacherModel) {
+    return this.http.post<TeacherModel>(this.teacherAPI, teacher);
   }
 
 
   // put request
-  update(dep: TeacherModel): Observable<TeacherModel> {
+  update(teacher: TeacherModel): Observable<TeacherModel> {
 
-    return this.http.put<TeacherModel>(this.teacherAPI + '/' + dep.id, dep);
+    return this.http.put<TeacherModel>(this.teacherAPI + '/' + teacher.id, teacher);
 
   }
 

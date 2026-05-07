@@ -34,9 +34,38 @@
       "email": "Finance@gmail.com"
     },
     {
-      "name": "Sajin",
-      "email": "hsstanvir@gmail.com",
+      "name": "Management",
+      "email": "Management@gmail.com",
       "id": "LpWbAag8stM"
+    },
+    {
+      "id": "j6nTKzUwi5Q",
+      "name": "History",
+      "email": "history@gmail.com"
+    },
+    {
+      "id": "35OXMIt8BYw",
+      "name": "Political Science",
+      "email": "p.science@gmail.com"
+    }
+  ],
+  "teacher": [
+   
+    {
+      "name": "Muhammad Emran Hossain",
+      "email": "emranhss@gmail.com",
+      "designation": "Instructor",
+      "cellNo": "45545454",
+      "departmentId": "1",
+      "id": "qLMX4wAwvTY"
+    },
+    {
+      "name": "Emran Hossain",
+      "email": "sdfgsd@gmail.com",
+      "designation": "Instructor",
+      "cellNo": "45545454",
+      "departmentId": "j6nTKzUwi5Q",
+      "id": "WBx3tONXmOI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
