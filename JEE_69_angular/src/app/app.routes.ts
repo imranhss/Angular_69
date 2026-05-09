@@ -5,6 +5,9 @@ import { AddEditStudent } from './component/student/add-edit-student/add-edit-st
 import { Department } from './component/department/department';
 import { AddTeacher } from './component/teacher/add-teacher/add-teacher';
 import { ListTeacher } from './component/teacher/list-teacher/list-teacher';
+import { Register } from './component/auth/register/register';
+import { Login } from './component/auth/login/login';
+import { Profile } from './component/auth/profile/profile';
 
 export const routes: Routes = [
 
@@ -16,5 +19,8 @@ export const routes: Routes = [
     {path: 'dep', component: Department},
     {path: 'addTeacher', component: AddTeacher},
     {path: 'allTeacher', component: ListTeacher},
+    {path: 'reg', component: Register},
+    {path: 'login', component: Login},
+    {path: 'profile', component: Profile},
     
 ];
