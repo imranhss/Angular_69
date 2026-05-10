@@ -19,7 +19,7 @@ export class Login {
 
   constructor(
     private authService: AuthService,
-    private cdr:ChangeDetectorRef,
+    private cdr: ChangeDetectorRef,
     private router: Router
   ) { }
 
@@ -37,9 +37,21 @@ export class Login {
           if (user.password === this.password) {
 
             alert("Login Success");
-            this.router.navigate(['/profile']);
+            // this.router.navigate(['/profile']);
 
             localStorage.setItem('user', JSON.stringify(user));
+
+            if (user.role == 'Admin') {
+              this.router.navigate(['/profile-admin']);
+            }
+            else if (user.role == 'Teacher') {
+              this.router.navigate(['/profile-teacher']);
+
+            }
+            else if (user.role == 'Student') {
+              this.router.navigate(['/profile-student']);
+            }
+
 
           } else {
             alert("Invalid Password");

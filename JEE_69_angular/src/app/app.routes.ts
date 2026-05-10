@@ -9,6 +9,9 @@ import { Register } from './component/auth/register/register';
 import { Login } from './component/auth/login/login';
 import { Profile } from './component/auth/profile/profile';
 import { authGuard } from './guards/guards-guard';
+import { ProfileAdmin } from './component/auth/profile/profile-admin/profile-admin';
+import { ProfileTeacher } from './component/auth/profile/profile-teacher/profile-teacher';
+import { ProfileStudent } from './component/auth/profile/profile-student/profile-student';
 
 export const routes: Routes = [
 
@@ -23,5 +26,10 @@ export const routes: Routes = [
     {path: 'reg', component: Register},
     {path: 'login', component: Login},
     {path: 'profile', component: Profile},
+
+
+    {path: 'profile-admin', component: ProfileAdmin, canActivate: [authGuard], data:{role:'Admin'} },
+    {path: 'profile-teacher', component: ProfileTeacher, canActivate: [authGuard], data:{role:'Teacher'}},
+    {path: 'profile-student', component: ProfileStudent, canActivate: [authGuard], data:{role:'Student'}},
     
 ];
