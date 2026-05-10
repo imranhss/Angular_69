@@ -12,7 +12,7 @@ export interface UserModel {
 
     image: string;
 
-    role: string;
+    role: 'Admin' | 'Teacher' | 'Student' | '';
 
 
 }
