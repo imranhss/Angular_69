@@ -39,6 +39,8 @@ export class Login {
             alert("Login Success");
             // this.router.navigate(['/profile']);
 
+            this.authService.loginUser(user);
+
             localStorage.setItem('user', JSON.stringify(user));
 
             if (user.role == 'Admin') {

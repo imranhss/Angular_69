@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,28 +12,39 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 export class Header implements OnInit {
 
 
-  loggedUser: any;
+   loggedUser: any = null;
+
   constructor(
-    private cdr: ChangeDetectorRef
-  ){}
+    private authService: AuthService,
+    private router: Router
+  ) { }
+
+
+
 
   ngOnInit(): void {
-    this.loadRole();
-     this.cdr.markForCheck();
+
+    // Listen for Login/Logout Changes
+    this.authService.currentUser$.subscribe({
+
+      next: (user) => {
+
+        this.loggedUser = user;
+
+      }
+
+    });
+
   }
 
-  loadRole() {
 
-    const userData = localStorage.getItem('user');
-    this.loggedUser = JSON.parse(userData!);
-   
-    console.log(this.loggedUser);
+  logout() {
+
+    this.authService.logoutUser();
+
+    this.router.navigate(['/login']);
+
   }
-
-
-
-
-
 
 
 }

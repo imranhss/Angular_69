@@ -3,6 +3,7 @@ import { StudentModel } from '../../../model/student.model';
 import { StudentService } from '../../../services/student.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-list-student',
@@ -14,9 +15,11 @@ export class ListStudent implements OnInit {
 
 
   students: StudentModel[] = [];
+  loggedUser: any = null;
 
   constructor(
     private studentService: StudentService,
+    private authService: AuthService,
     private cdr: ChangeDetectorRef,
   
   ) { }
@@ -24,6 +27,17 @@ export class ListStudent implements OnInit {
 
   ngOnInit(): void {
     this.loadAllStudent();
+
+    this.authService.currentUser$.subscribe({
+
+      next: (user) => {
+
+        this.loggedUser = user;
+
+      }
+
+    });
+
   }
 
   loadAllStudent() {

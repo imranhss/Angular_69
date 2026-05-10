@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { UserModel } from '../model/users.model';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -11,9 +11,54 @@ export class AuthService {
 
   private authUrl: string = environment.apiUrl + 'users';
 
-  constructor(
-    private http: HttpClient
-  ) { }
+   // Store Logged User
+  private currentUserSubject = new BehaviorSubject<any>(this.getStoredUser());
+
+  // Observable
+  currentUser$ = this.currentUserSubject.asObservable();
+
+
+  constructor(private http: HttpClient) { }
+
+
+  // Get User from LocalStorage
+  private getStoredUser() {
+
+    const user = localStorage.getItem('user');
+
+    return user ? JSON.parse(user) : null;
+
+  }
+
+
+  // Login User
+  loginUser(user: UserModel) {
+
+    localStorage.setItem('user', JSON.stringify(user));
+
+    // Update Observable
+    this.currentUserSubject.next(user);
+
+  }
+
+
+  // Logout User
+  logoutUser() {
+
+    localStorage.removeItem('user');
+
+    // Update Observable
+    this.currentUserSubject.next(null);
+
+  }
+
+
+  // Get Current User
+  getCurrentUser() {
+
+    return this.currentUserSubject.value;
+
+  }
 
 
   // Get Request

@@ -9,7 +9,14 @@
                 <th>Email</th>
                 <th>Cell No</th>
                 <th>Fee</th>
-                <th>Action</th>
+
+                <div *ngIf="loggedUser.role === 'Admin' || loggedUser.role === 'Teacher'">
+
+                    <th>Action</th>
+
+                </div>
+
+
             </tr>
         </thead>
 
@@ -21,11 +28,18 @@
                 <td>{{s.email}}</td>
                 <td>{{s.cellNo}}</td>
                 <td>{{s.fee}}</td>
-                <td>
-                    <button class="btn btn-danger mx-3" (click)="remove(s.id!)">Delete</button>
-                    <button class="btn btn-warning mx-3" [routerLink]="['edit/', s.id]" >Edit</button>
 
-                </td>
+                <div *ngIf="loggedUser.role === 'Admin' || loggedUser.role === 'Teacher' ">
+
+                    <td>
+                        <button class="btn btn-danger mx-3" (click)="remove(s.id!)">Delete</button>
+                        <button class="btn btn-warning mx-3" [routerLink]="['edit/', s.id]">Edit</button>
+
+                    </td>
+
+                </div>
+
+
 
 
 
