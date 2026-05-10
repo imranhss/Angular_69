@@ -21,9 +21,9 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let s of students">
+            <tr *ngFor="let s of students; let i = index">
 
-                <td>{{s.id}}</td>
+                <td>{{i+1}}</td>
                 <td>{{s.name}}</td>
                 <td>{{s.email}}</td>
                 <td>{{s.cellNo}}</td>
