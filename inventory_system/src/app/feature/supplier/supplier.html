@@ -1,0 +1,194 @@
+<!-- supplier.html -->
+
+<div class="container mt-4">
+
+  <!-- Form Card -->
+  <div class="card shadow border-0 mb-4">
+
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0">
+        {{ isEditMode ? 'Update Supplier' : 'Add Supplier' }}
+      </h3>
+    </div>
+
+    <div class="card-body">
+
+      <form (ngSubmit)="saveSupplier()">
+
+        <div class="row">
+
+          <!-- Name -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold">
+              Supplier Name
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter supplier name"
+              [(ngModel)]="supplier.name"
+              name="name"
+              required
+            />
+          </div>
+
+          <!-- Company -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold">
+              Company
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter company name"
+              [(ngModel)]="supplier.company"
+              name="company"
+              required
+            />
+          </div>
+
+          <!-- Phone -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold">
+              Phone
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter phone number"
+              [(ngModel)]="supplier.phone"
+              name="phone"
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold">
+              Email
+            </label>
+
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Enter email"
+              [(ngModel)]="supplier.email"
+              name="email"
+            />
+          </div>
+
+          <!-- Address -->
+          <div class="col-12 mb-3">
+            <label class="form-label fw-semibold">
+              Address
+            </label>
+
+            <textarea
+              class="form-control"
+              rows="3"
+              placeholder="Enter address"
+              [(ngModel)]="supplier.address"
+              name="address"
+            ></textarea>
+          </div>
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex gap-2">
+
+          <button
+            type="submit"
+            class="btn btn-success"
+          >
+            {{ isEditMode ? 'Update Supplier' : 'Save Supplier' }}
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="resetForm()"
+          >
+            Clear
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Supplier Cards -->
+  <div class="row">
+
+    <div
+      class="col-md-6 col-lg-4 mb-4"
+      *ngFor="let item of suppliers"
+    >
+
+      <div class="card supplier-card shadow-sm border-0 h-100">
+
+        <div class="card-body">
+
+          <h4 class="card-title fw-bold text-primary">
+            {{ item.name }}
+          </h4>
+
+          <h6 class="text-muted mb-3">
+            {{ item.company }}
+          </h6>
+
+          <p class="mb-2">
+            <strong>Phone:</strong>
+            {{ item.phone }}
+          </p>
+
+          <p class="mb-2">
+            <strong>Email:</strong>
+            {{ item.email }}
+          </p>
+
+          <p class="mb-3">
+            <strong>Address:</strong>
+            {{ item.address }}
+          </p>
+
+          <div class="d-flex justify-content-between">
+
+            <button
+              class="btn btn-warning btn-sm"
+              (click)="editSupplier(item)"
+            >
+              Edit
+            </button>
+
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteSupplier(item.id)"
+            >
+              Delete
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="suppliers.length === 0">
+
+      <div class="alert alert-info">
+        No suppliers found.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

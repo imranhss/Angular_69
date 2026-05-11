@@ -1,0 +1,21 @@
+/* supplier.css */
+
+.card {
+  border-radius: 14px;
+}
+
+.form-control {
+  border-radius: 8px;
+}
+
+.btn {
+  border-radius: 8px;
+}
+
+.supplier-card {
+  transition: all 0.3s ease;
+}
+
+.supplier-card:hover {
+  transform: translateY(-5px);
+}

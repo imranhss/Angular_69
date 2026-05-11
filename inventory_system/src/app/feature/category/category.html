@@ -1,0 +1,141 @@
+<!-- category.html -->
+
+<div class="container mt-5">
+
+  <div class="card shadow border-0">
+    
+    <div class="card-header bg-primary text-white">
+      <h3 class="mb-0">
+        {{ isEditMode ? 'Update Category' : 'Add Category' }}
+      </h3>
+    </div>
+
+    <div class="card-body">
+
+      <form (ngSubmit)="saveCategory()">
+
+        <!-- Category Name -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            Category Name
+          </label>
+
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter category name"
+            [(ngModel)]="category.categoryName"
+            name="categoryName"
+            required
+          />
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            Description
+          </label>
+
+          <textarea
+            class="form-control"
+            rows="3"
+            placeholder="Enter description"
+            [(ngModel)]="category.description"
+            name="description"
+          ></textarea>
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex gap-2">
+
+          <button
+            type="submit"
+            class="btn btn-success"
+          >
+            {{ isEditMode ? 'Update' : 'Save' }}
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="resetForm()"
+          >
+            Clear
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Category Table -->
+  <div class="card shadow border-0 mt-4">
+
+    <div class="card-header bg-dark text-white">
+      <h4 class="mb-0">Category List</h4>
+    </div>
+
+    <div class="card-body table-responsive">
+
+      <table class="table table-hover table-bordered align-middle">
+
+        <thead class="table-light">
+          <tr>
+            <th width="80">ID</th>
+            <th>Category Name</th>
+            <th>Description</th>
+            <th width="180" class="text-center">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let item of categories">
+
+            <td>{{ item.id }}</td>
+
+            <td>
+              <span class="fw-semibold">
+                {{ item.categoryName }}
+              </span>
+            </td>
+
+            <td>{{ item.description }}</td>
+
+            <td class="text-center">
+
+              <button
+                class="btn btn-warning btn-sm me-2"
+                (click)="editCategory(item)"
+              >
+                Edit
+              </button>
+
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="deleteCategory(item.id)"
+              >
+                Delete
+              </button>
+
+            </td>
+
+          </tr>
+
+          <!-- Empty State -->
+          <tr *ngIf="categories.length === 0">
+            <td colspan="4" class="text-center text-muted py-4">
+              No categories found
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
+
+</div>

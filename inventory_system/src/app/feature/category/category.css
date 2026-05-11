@@ -1,0 +1,18 @@
+/* category.css */
+
+.card {
+  border-radius: 12px;
+}
+
+.form-control {
+  border-radius: 8px;
+}
+
+.btn {
+  border-radius: 8px;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}

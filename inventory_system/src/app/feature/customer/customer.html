@@ -1,0 +1,127 @@
+<div class="container py-4">
+
+  <!-- 🔍 SEARCH -->
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        placeholder="🔍 Search by name, email, phone..."
+        [(ngModel)]="searchText"
+        (input)="onSearch()"
+      />
+    </div>
+  </div>
+
+  <!-- 🧾 FORM CARD -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">
+        {{ isEditMode ? '✏️ Edit Customer' : '➕ Add Customer' }}
+      </h5>
+    </div>
+
+    <div class="card-body">
+
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <input class="form-control" placeholder="Name" [(ngModel)]="selectedCustomer.name" />
+        </div>
+
+        <div class="col-md-6">
+          <input class="form-control" placeholder="Phone" [(ngModel)]="selectedCustomer.phone" />
+        </div>
+
+        <div class="col-md-6">
+          <input class="form-control" placeholder="Email" [(ngModel)]="selectedCustomer.email" />
+        </div>
+
+        <div class="col-md-6">
+          <input class="form-control" placeholder="Address" [(ngModel)]="selectedCustomer.address" />
+        </div>
+
+        <div class="col-md-12">
+          <input class="form-control" type="file" (change)="onFileSelected($event)" />
+        </div>
+
+      </div>
+
+      <!-- 👀 IMAGE PREVIEW -->
+      <div class="mt-3 d-flex gap-3 align-items-center">
+
+        <img
+          *ngIf="previewImage"
+          [src]="previewImage"
+          class="img-thumbnail"
+          style="width: 120px; height: 120px; object-fit: cover;"
+        />
+
+        <img
+          *ngIf="!previewImage && selectedCustomer.image"
+          [src]="selectedCustomer.image"
+          class="img-thumbnail"
+          style="width: 120px; height: 120px; object-fit: cover;"
+        />
+
+        <div>
+          <small class="text-muted">Image Preview</small>
+        </div>
+
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="mt-3 d-flex gap-2">
+
+        <button class="btn btn-success" (click)="saveCustomer()">
+          {{ isEditMode ? 'Update' : 'Save' }}
+        </button>
+
+        <button class="btn btn-secondary" *ngIf="isEditMode" (click)="resetForm()">
+          Cancel
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 📦 CARD GRID -->
+  <div class="row g-4">
+
+    <div class="col-md-4" *ngFor="let c of filteredCustomers">
+
+      <div class="card h-100 shadow-sm">
+
+        <img
+          [src]="c.image || 'assets/default.png'"
+          class="card-img-top"
+          style="height: 200px; object-fit: cover;"
+        />
+
+        <div class="card-body">
+          <h5 class="card-title">{{ c.name }}</h5>
+          <p class="card-text mb-1">📞 {{ c.phone }}</p>
+          <p class="card-text mb-1">✉️ {{ c.email }}</p>
+          <p class="card-text">🏠 {{ c.address }}</p>
+        </div>
+
+        <div class="card-footer d-flex justify-content-between">
+
+          <button class="btn btn-sm btn-primary" (click)="editCustomer(c)">
+            Edit
+          </button>
+
+          <button class="btn btn-sm btn-danger" (click)="deleteCustomer(c.id!)">
+            Delete
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
