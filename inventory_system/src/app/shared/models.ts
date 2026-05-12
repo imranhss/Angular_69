@@ -42,4 +42,26 @@ export interface Customer {
 }
 
 
+export interface Purchase {
+  id?: string;
+  supplierId: string;
+  purchaseDate: string;
+  invoiceNo: string;
+  grandTotal: number;
+  paidAmount: number;
+  dueAmount: number;
+  items: PurchaseItem[];
+}
+
+
+export interface PurchaseItem {
+  productId: string;
+  qty: number;
+  purchasePrice: number;
+  total: number;
+}
+
+
+
+
 

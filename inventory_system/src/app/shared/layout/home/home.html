@@ -1,0 +1,163 @@
+<!-- HERO SECTION -->
+<section class="hero-section text-white">
+  <div class="container py-5">
+
+    <div class="row align-items-center">
+
+      <div class="col-lg-7">
+        <h1 class="display-4 fw-bold mb-3">
+          Inventory Management System
+        </h1>
+
+        <p class="lead mb-4">
+          Manage products, suppliers, categories, stock and customers easily with a modern inventory dashboard.
+        </p>
+
+        <div class="d-flex gap-3 flex-wrap">
+          <a routerLink="/products" class="btn btn-light btn-lg px-4">
+            Manage Products
+          </a>
+
+          <a routerLink="/customers" class="btn btn-outline-light btn-lg px-4">
+            Customers
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-5 text-center mt-4 mt-lg-0">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png"
+          class="hero-image img-fluid"
+          alt="inventory"
+        />
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- STATISTICS -->
+<section class="container py-5">
+
+  <div class="row g-4">
+
+    <div class="col-md-3" *ngFor="let item of stats">
+
+      <div class="card stat-card border-0 shadow-sm h-100">
+
+        <div class="card-body text-center">
+
+          <div class="stat-icon bg-{{ item.color }} text-white mx-auto mb-3">
+            {{ item.icon }}
+          </div>
+
+          <h3 class="fw-bold mb-1">{{ item.value }}</h3>
+
+          <p class="text-muted mb-0">
+            {{ item.title }}
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- QUICK MENU -->
+<section class="container pb-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">Quick Access</h2>
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-md-3" *ngFor="let menu of quickMenus">
+
+      <div class="card menu-card border-0 shadow-sm h-100">
+
+        <div class="card-body text-center p-4">
+
+          <div class="menu-icon bg-{{ menu.color }} text-white mx-auto mb-3">
+            {{ menu.icon }}
+          </div>
+
+          <h5 class="fw-bold">
+            {{ menu.title }}
+          </h5>
+
+          <p class="text-muted small mb-4">
+            {{ menu.description }}
+          </p>
+
+          <a
+            href="menu.route"
+            class="btn btn-outline-dark w-100"
+          > 
+            Open
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FEATURES -->
+<section class="bg-light py-5">
+
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">System Features</h2>
+      <p class="text-muted">
+        Everything you need to manage inventory efficiently
+      </p>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="feature-card p-4 bg-white rounded shadow-sm h-100 text-center">
+          <div class="feature-icon mb-3">📊</div>
+          <h5>Stock Tracking</h5>
+          <p class="text-muted">
+            Track inventory stock levels in real-time.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card p-4 bg-white rounded shadow-sm h-100 text-center">
+          <div class="feature-icon mb-3">💰</div>
+          <h5>Sales Management</h5>
+          <p class="text-muted">
+            Manage purchases and sales easily.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="feature-card p-4 bg-white rounded shadow-sm h-100 text-center">
+          <div class="feature-icon mb-3">🔔</div>
+          <h5>Low Stock Alert</h5>
+          <p class="text-muted">
+            Get alerts when products are running low.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
