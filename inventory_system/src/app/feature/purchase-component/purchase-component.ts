@@ -12,11 +12,11 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './purchase-component.html',
   styleUrl: './purchase-component.css',
 })
-export class PurchaseComponent implements OnInit{
+export class PurchaseComponent implements OnInit {
 
 
 
- suppliers: Supplier[] = [];
+  suppliers: Supplier[] = [];
   products: ProductModel[] = [];
 
   purchases: Purchase[] = [];
@@ -28,7 +28,7 @@ export class PurchaseComponent implements OnInit{
     private productService: ProductService,
     private purchaseService: PurchaseService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadSuppliers();

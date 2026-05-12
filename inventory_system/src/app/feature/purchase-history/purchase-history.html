@@ -1,0 +1,193 @@
+<div class="container py-4">
+
+  <div class="card shadow-sm">
+    <!-- 🔍 FILTER SECTION -->
+<div class="card shadow-sm mb-3">
+
+  <div class="card-body">
+
+    <div class="row g-3">
+
+      <!-- INVOICE -->
+      <div class="col-md-3">
+        <label class="form-label">
+          Invoice No
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search invoice..."
+          [(ngModel)]="searchInvoice"
+          (input)="filterPurchases()"
+        >
+      </div>
+
+      <!-- SUPPLIER -->
+      <div class="col-md-3">
+        <label class="form-label">
+          Supplier
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search supplier..."
+          [(ngModel)]="searchSupplier"
+          (input)="filterPurchases()"
+        >
+      </div>
+
+      <!-- FROM DATE -->
+      <div class="col-md-3">
+        <label class="form-label">
+          From Date
+        </label>
+
+        <input
+          type="date"
+          class="form-control"
+          [(ngModel)]="fromDate"
+          (change)="filterPurchases()"
+        >
+      </div>
+
+      <!-- TO DATE -->
+      <div class="col-md-3">
+        <label class="form-label">
+          To Date
+        </label>
+
+        <input
+          type="date"
+          class="form-control"
+          [(ngModel)]="toDate"
+          (change)="filterPurchases()"
+        >
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+    <div class="card-header bg-dark text-white">
+      <h5 class="mb-0">Purchase History</h5>
+    </div>
+
+    <div class="card-body">
+
+      <div class="table-responsive">
+
+        <table class="table table-bordered table-hover align-middle">
+
+          <thead class="table-primary">
+
+            <tr>
+              <th>#</th>
+              <th>Invoice</th>
+              <th>Supplier</th>
+              <th>Date</th>
+              <th>Total</th>
+              <th>Paid</th>
+              <th>Due</th>
+              <th>Products</th>
+              <th width="120">Action</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr *ngFor="let p of filteredPurchases; let i = index">
+
+              <!-- SERIAL -->
+              <td>{{ i + 1 }}</td>
+
+              <!-- INVOICE -->
+              <td>{{ p.invoiceNo }}</td>
+
+              <!-- SUPPLIER -->
+              <td>{{ getSupplierName(p.supplierId) }}</td>
+
+              <!-- DATE -->
+              <td>{{ p.purchaseDate }}</td>
+
+              <!-- TOTAL -->
+              <td class="fw-bold text-success">
+                {{ p.grandTotal }}
+              </td>
+
+              <!-- PAID -->
+              <td>{{ p.paidAmount }}</td>
+
+              <!-- DUE -->
+              <td class="fw-bold text-danger">
+                {{ p.dueAmount }}
+              </td>
+
+              <!-- PRODUCTS -->
+              <td>
+
+                <table class="table table-sm table-bordered mb-0">
+
+                  <thead class="table-light">
+
+                    <tr>
+                      <th>Product</th>
+                      <th>Qty</th>
+                      <th>Price</th>
+                      <th>Total</th>
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+
+                    <tr *ngFor="let item of p.items">
+
+                      <td>
+                        {{ getProductName(item.productId) }}
+                      </td>
+
+                      <td>{{ item.qty }}</td>
+
+                      <td>{{ item.purchasePrice }}</td>
+
+                      <td>{{ item.total }}</td>
+
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </td>
+
+              <!-- ACTION -->
+              <td>
+
+                <button
+                  class="btn btn-danger btn-sm"
+                  (click)="deletePurchase(p.id!)">
+
+                  Delete
+
+                </button>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
